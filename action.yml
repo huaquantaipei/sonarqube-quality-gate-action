@@ -20,5 +20,5 @@ outputs:
     description: >
       The resulting Quality Gate Status value of PASSED, WARN or FAILED
     value: ${{ steps.quality-gate-check.outputs.quality-gate-status }}
-    value: ${{ steps.quality-gate-check.outputs.quality-gate-status }}
-    value: ${{ steps.quality-gate-check.outputs.quality-gate-status }}
+    value2: ${{ steps.quality-gate-check.outputs.quality-gate-status }}
+    value3: ${{ steps.quality-gate-check.outputs.quality-gate-status }}
