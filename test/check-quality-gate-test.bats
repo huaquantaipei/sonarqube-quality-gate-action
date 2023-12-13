@@ -129,6 +129,7 @@ teardown() {
   [[ "${github_out_actual}" = "quality-gate-status=FAILED" ]]
   [[ "$output" = *"Quality Gate has FAILED."* ]]
   [[ "$output" = *"Detailed information can be found at: http://localhost:9000/dashboard?id=project&branch=master"* ]]
+  [[ "$output" = *"Detailed information can be found at: https://f575-211-23-35-187.ngrok-free.app/dashboard?id=huaquantaipei_autoRunTest_AYxdHFV2zxSlKB1ElcXK"* ]]
 }
 
 @test "pass when Quality Gate status OK" {
