@@ -93,7 +93,7 @@ elif [[ ${qualityGateStatus} == "ERROR" ]]; then
        warn "code smells :${reset} ${qualityGateStatus_bugs_actualValue}"
    elif [[ ${qualityGateStatus_bugs} == "OK" ]]; then
        set_output "quality-gate-code-smells-status" "OK"
-       success "code smells :${reset} ${qualityGateStatus_bugs_actualValue}"
+       success "bugs :${reset} ${qualityGateStatus_bugs_actualValue}"
    fi
 
    endoferror ""
