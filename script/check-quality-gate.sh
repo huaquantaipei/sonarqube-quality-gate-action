@@ -49,7 +49,8 @@ analysisId="$(jq -r '.task.analysisId' <<< "${task}")"
 qualityGateUrl="${serverUrl}/api/qualitygates/project_status?analysisId=${analysisId}"
 qualityGateStatus="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.status')"
 
-dashboardUrl="https://f575-211-23-35-187.ngrok-free.app/""$(sed -n 's/dashboardUrl=\(.*\)/\1/p' "${metadataFile}")"
+dashboardUrl="$(sed -n 's/dashboardUrl=\(.*\)/\1/p' "${metadataFile}")"
+dashboardUrl="https://f575-211-23-35-187.ngrok-free.app/"+dashboardUrl
 analysisResultMsg="Detailed information can be found at: ${dashboardUrl}\n"
 
 if [[ ${qualityGateStatus} == "OK" ]]; then
