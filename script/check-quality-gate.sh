@@ -54,6 +54,7 @@ analysisId="$(jq -r '.task.analysisId' <<< "${task}")"
 qualityGateUrl="${serverUrl}/api/qualitygates/project_status?analysisId=${analysisId}"
 qualityGateStatus="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.status')"
 qualityGateStatus_code_smells="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[2].status')"
+qualityGateStatus_code_smells_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[2].actualValue')"
 
 dashboardUrl=${serverUrl%/}+${analysisId}
 # analysisResultMsg="Detailed information can be found at: ${dashboardUrl}\n"
@@ -70,7 +71,7 @@ elif [[ ${qualityGateStatus} == "ERROR" ]]; then
    fail "Quality Gate has FAILED.${reset}\n\n${analysisResultMsg}"
     if [[ ${qualityGateStatus_code_smells} == "ERROR" ]]; then
        set_output "quality-gate-code-smells-status" "FAILED"
-       fail "code smells has FAILED.${reset}\n\n${analysisResultMsg}"
+       fail "code smells has FAILED.${reset} actualValue：${qualityGateStatus_code_smells_actualValue}"
     fi
 else
    set_output "quality-gate-status" "FAILED"
