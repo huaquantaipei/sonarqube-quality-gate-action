@@ -20,10 +20,10 @@ debug() {
     fi
 }
 
-title() { echo -e "\n${purple}◍ $*${reset}"; }
-success() { echo -e "${green} ✔ $*${reset}"; }
-warn() { echo -e "${yellow} ✖ $*${reset}"; }
-fail() { echo -e "${red} ✖ $*${reset}"; }
+title() { echo -e "\n${purple}◍ $*"; }
+success() { echo -e "${green}  ✔ $*${reset}"; }
+warn() { echo -e "${yellow}  ✖ $*${reset}"; }
+fail() { echo -e "${red}  ✖ $*${reset}"; }
 endoferror() { echo -e "${red} $*${reset}"; exit 1; }
 
 # support old GH Actions runners
