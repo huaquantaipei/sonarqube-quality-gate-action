@@ -50,6 +50,7 @@ qualityGateUrl="${serverUrl}/api/qualitygates/project_status?analysisId=${analys
 qualityGateStatus="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.status')"
 
 dashboardUrl="$(sed -n 's/dashboardUrl=\(.*\)/\1/p' "${metadataFile}")"
+dashboardUrl=${ceTaskUrl}
 analysisResultMsg="Detailed information can be found at: ${dashboardUrl}\n"
 
 if [[ ${qualityGateStatus} == "OK" ]]; then
