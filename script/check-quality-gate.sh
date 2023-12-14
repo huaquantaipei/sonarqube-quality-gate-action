@@ -7,6 +7,11 @@ if [[ -z "${SONAR_TOKEN}" ]]; then
   exit 1
 fi
 
+if [[ -z "${SONAR_PROJECT_KEY}" ]]; then
+  echo "Set the SONAR_PROJECT_KEY env variable."
+  exit 1
+fi
+
 metadataFile="$1"
 
 if [[ ! -f "$metadataFile" ]]; then
