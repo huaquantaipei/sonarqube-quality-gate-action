@@ -19,7 +19,7 @@ debug() {
     fi
 }
 
-title() { echo -e "${blue}/n◍ $*${reset}"; }
+title() { echo -e "${blue}\n◍ $*${reset}"; }
 success() { echo -e "${green} ✔ $*${reset}"; }
 warn() { echo -e "${yellow} ✖ $*${reset}"; }
 fail() { echo -e "${red} ✖ $*${reset}"; }
