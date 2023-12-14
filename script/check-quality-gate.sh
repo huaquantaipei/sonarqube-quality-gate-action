@@ -67,7 +67,7 @@ elif [[ ${qualityGateStatus} == "WARN" ]]; then
    warn "Warnings on Quality Gate.${reset}\n\n${analysisResultMsg}"
 elif [[ ${qualityGateStatus} == "ERROR" ]]; then
    # set_output "quality-gate-status" "FAILED"
-   # fail "Quality Gate has FAILED.${reset}\n\n${analysisResultMsg}"
+   fail "Quality Gate has FAILED.${reset}\n\n${analysisResultMsg}"
     # if [[ ${qualityGateStatus_code_smells} == "ERROR" ]]; then
    set_output "quality-gate-code-smells-status" "FAILED"
    fail "code smells has FAILED.${reset}\n\n${analysisResultMsg}"
