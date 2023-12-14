@@ -205,7 +205,7 @@ elif [[ ${qualityGateStatus} == "ERROR" ]]; then
    fi
    #########################################################################################
 
-   title "New Code："
+   title "New Code：${reset}"
    if [[ ${qualityGateStatus_new_code_smells} == "ERROR" ]]; then
        set_output "quality-gate-code-smells-status" "FAILED"
        fail "New code smells :${reset} ${qualityGateStatus_new_code_smells_actualValue}"
