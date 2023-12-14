@@ -53,10 +53,16 @@ printf '\n'
 analysisId="$(jq -r '.task.analysisId' <<< "${task}")"
 qualityGateUrl="${serverUrl}/api/qualitygates/project_status?analysisId=${analysisId}"
 qualityGateStatus="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.status')"
-qualityGateStatus_code_smells="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[2].status')"
-qualityGateStatus_code_smells_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[2].actualValue')"
-qualityGateStatus_bugs="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[3].status')"
-qualityGateStatus_bugs_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[3].actualValue')"
+
+qualityGateStatus_code_smells="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[6].status')"
+qualityGateStatus_code_smells_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[6].actualValue')"
+qualityGateStatus_new_code_smells="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[12].status')"
+qualityGateStatus_new_code_smells_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[12].actualValue')"
+
+qualityGateStatus_bugs="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[5].status')"
+qualityGateStatus_bugs_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[5].actualValue')"
+qualityGateStatus_new_bugs="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[11].status')"
+qualityGateStatus_new_bugs_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[11].actualValue')"
 
 
 
@@ -74,6 +80,8 @@ elif [[ ${qualityGateStatus} == "ERROR" ]]; then
 
    set_output "quality-gate-status" "FAILED"
    fail "Quality Gate has FAILED.${reset} ${analysisResultMsg}"
+
+   title "Overall Code："
    if [[ ${qualityGateStatus_code_smells} == "ERROR" ]]; then
        set_output "quality-gate-code-smells-status" "FAILED"
        fail "code smells :${reset} ${qualityGateStatus_code_smells_actualValue}"
@@ -84,7 +92,6 @@ elif [[ ${qualityGateStatus} == "ERROR" ]]; then
        set_output "quality-gate-code-smells-status" "OK"
        success "code smells :${reset} ${qualityGateStatus_code_smells_actualValue}"
    fi
-
    if [[ ${qualityGateStatus_bugs} == "ERROR" ]]; then
        set_output "quality-gate-code-smells-status" "FAILED"
        fail "code smells :${reset} ${qualityGateStatus_bugs_actualValue}"
@@ -94,6 +101,28 @@ elif [[ ${qualityGateStatus} == "ERROR" ]]; then
    elif [[ ${qualityGateStatus_bugs} == "OK" ]]; then
        set_output "quality-gate-code-smells-status" "OK"
        success "bugs :${reset} ${qualityGateStatus_bugs_actualValue}"
+   fi
+
+   title "New Code："
+   if [[ ${qualityGateStatus_new_code_smells} == "ERROR" ]]; then
+       set_output "quality-gate-code-smells-status" "FAILED"
+       fail "code smells :${reset} ${qualityGateStatus_new_code_smells_actualValue}"
+   elif [[ ${qualityGateStatus_new_code_smells} == "WARN" ]]; then
+       set_output "quality-gate-code-smells-status" "WARN"
+       warn "code smells :${reset} ${qualityGateStatus_new_code_smells_actualValue}"
+   elif [[ ${qualityGateStatus_new_code_smells} == "OK" ]]; then
+       set_output "quality-gate-code-smells-status" "OK"
+       success "code smells :${reset} ${qualityGateStatus_new_code_smells_actualValue}"
+   fi
+   if [[ ${qualityGateStatus_new_bugs} == "ERROR" ]]; then
+       set_output "quality-gate-code-smells-status" "FAILED"
+       fail "code smells :${reset} ${qualityGateStatus_new_bugs_actualValue}"
+   elif [[ ${qualityGateStatus_new_bugs} == "WARN" ]]; then
+       set_output "quality-gate-code-smells-status" "WARN"
+       warn "code smells :${reset} ${qualityGateStatus_new_bugs_actualValue}"
+   elif [[ ${qualityGateStatus_new_bugs} == "OK" ]]; then
+       set_output "quality-gate-code-smells-status" "OK"
+       success "bugs :${reset} ${qualityGateStatus_new_bugs_actualValue}"
    fi
 
    endoferror "https://f575-211-23-35-187.ngrok-free.app/api/qualitygates/project_status?analysisId=${analysisId}"
