@@ -55,6 +55,10 @@ qualityGateUrl="${serverUrl}/api/qualitygates/project_status?analysisId=${analys
 qualityGateStatus="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.status')"
 qualityGateStatus_code_smells="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[2].status')"
 qualityGateStatus_code_smells_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[2].actualValue')"
+qualityGateStatus_bugs="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[3].status')"
+qualityGateStatus_bugs_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[3].actualValue')"
+
+
 
 dashboardUrl=${serverUrl}
 analysisResultMsg="Detailed information can be found at: ${dashboardUrl}"
@@ -80,7 +84,19 @@ elif [[ ${qualityGateStatus} == "ERROR" ]]; then
        set_output "quality-gate-code-smells-status" "OK"
        success "code smells :${reset} ${qualityGateStatus_code_smells_actualValue}"
    fi
-   endoferror "${analysisId}"
+
+   if [[ ${qualityGateStatus_bugs} == "ERROR" ]]; then
+       set_output "quality-gate-code-smells-status" "FAILED"
+       fail "code smells :${reset} ${qualityGateStatus_bugs_actualValue}"
+   elif [[ ${qualityGateStatus_bugs} == "WARN" ]]; then
+       set_output "quality-gate-code-smells-status" "WARN"
+       warn "code smells :${reset} ${qualityGateStatus_bugs_actualValue}"
+   elif [[ ${qualityGateStatus_bugs} == "OK" ]]; then
+       set_output "quality-gate-code-smells-status" "OK"
+       success "code smells :${reset} ${qualityGateStatus_bugs_actualValue}"
+   fi
+
+   endoferror ""
 else
    set_output "quality-gate-status" "FAILED"
    fail "Quality Gate not set for the project. Please configure the Quality Gate in SonarQube or remove sonarqube-quality-gate action from the workflow."
