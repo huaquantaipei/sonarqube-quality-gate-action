@@ -68,10 +68,10 @@ elif [[ ${qualityGateStatus} == "WARN" ]]; then
 elif [[ ${qualityGateStatus} == "ERROR" ]]; then
    set_output "quality-gate-status" "FAILED"
    fail "Quality Gate has FAILED.${reset}\n\n${analysisResultMsg}"
-  if [[ ${qualityGateStatus_code_smells} == "ERROR" ]]; then
-     set_output "quality-gate-code-smells-status" "FAILED"
-     fail "Quality Gate has FAILED.${reset}\n\n${analysisResultMsg}"
-  fi
+    # if [[ ${qualityGateStatus_code_smells} == "ERROR" ]]; then
+   set_output "quality-gate-code-smells-status" "FAILED"
+   fail "Quality Gate has FAILED.${reset}\n\n${analysisResultMsg}"
+    # fi
 else
    set_output "quality-gate-status" "FAILED"
    fail "Quality Gate not set for the project. Please configure the Quality Gate in SonarQube or remove sonarqube-quality-gate action from the workflow."
