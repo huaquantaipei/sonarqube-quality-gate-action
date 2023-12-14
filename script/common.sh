@@ -4,7 +4,7 @@
 set -e
 set -o pipefail
 
-gray="\\e[44;37m"
+gray="\\e[36m"
 blue="\\e[36m"
 red="\\e[31m"
 yellow="\\e[33m"
