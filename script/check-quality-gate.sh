@@ -54,7 +54,7 @@ analysisId="$(jq -r '.task.analysisId' <<< "${task}")"
 qualityGateUrl="${serverUrl}/api/qualitygates/project_status?analysisId=${analysisId}"
 qualityGateStatus="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.status')"
 
-dashboardUrl=${serverUrl%/}
+dashboardUrl=${serverUrl%/}+${analysisId}
 analysisResultMsg="Detailed information can be found at: ${dashboardUrl}\n"
 
 if [[ ${qualityGateStatus} == "OK" ]]; then
