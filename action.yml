@@ -20,3 +20,7 @@ outputs:
     description: >
       The resulting Quality Gate Status value of PASSED, WARN or FAILED
     value: ${{ steps.quality-gate-check.outputs.quality-gate-status }}
+  qualityGateStatus_code_smells:
+    description: >
+      The resulting Quality Gate Status value of PASSED, WARN or FAILED
+    value: ${{ steps.quality-gate-check.outputs.qualityGateStatus_code_smells }}
