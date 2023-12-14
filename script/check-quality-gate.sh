@@ -56,7 +56,8 @@ qualityGateStatus="$(curl --location --location-trusted --max-redirs 10 --silent
 qualityGateStatus_code_smells="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[2].status')"
 
 dashboardUrl=${serverUrl%/}+${analysisId}
-analysisResultMsg="Detailed information can be found at: ${dashboardUrl}\n"
+# analysisResultMsg="Detailed information can be found at: ${dashboardUrl}\n"
+analysisResultMsg="Detailed information can be found at: ${qualityGateStatus_code_smells}\n"
 
 if [[ ${qualityGateStatus} == "OK" ]]; then
    set_output "quality-gate-status" "PASSED"
@@ -68,7 +69,7 @@ elif [[ ${qualityGateStatus} == "ERROR" ]]; then
    set_output "quality-gate-status" "FAILED"
    fail "Quality Gate has FAILED.${reset}\n\n${analysisResultMsg}"
   if [[ ${qualityGateStatus_code_smells} == "ERROR" ]]; then
-     set_output "quality-gate-code-smells status" "FAILED"
+     set_output "quality-gate-code-smells-status" "FAILED"
      fail "Quality Gate has FAILED.${reset}\n\n${analysisResultMsg}"
   fi
 else
