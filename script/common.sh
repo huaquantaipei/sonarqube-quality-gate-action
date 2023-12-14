@@ -22,6 +22,7 @@ debug() {
 success() { echo -e "${green}✔ $*${reset}"; }
 warn() { echo -e "${yellow}✖ $*${reset}"; exit 1; }
 fail() { echo -e "${red}✖ $*${reset}"; }
+endoferror() { echo exit 1; }
 
 # support old GH Actions runners
 set_output () {
