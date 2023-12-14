@@ -73,7 +73,7 @@ elif [[ ${qualityGateStatus} == "ERROR" ]]; then
        set_output "quality-gate-code-smells-status" "FAILED"
        fail "code smells has FAILED.${reset} actualValue：${qualityGateStatus_code_smells_actualValue}"
    fi
-   endoferror
+   endoferror "Quality Gate has FAILED"
 else
    set_output "quality-gate-status" "FAILED"
    fail "Quality Gate not set for the project. Please configure the Quality Gate in SonarQube or remove sonarqube-quality-gate action from the workflow."
