@@ -70,7 +70,7 @@ elif [[ ${qualityGateStatus} == "ERROR" ]]; then
    # fail "Quality Gate has FAILED.${reset}\n\n${analysisResultMsg}"
     # if [[ ${qualityGateStatus_code_smells} == "ERROR" ]]; then
    set_output "quality-gate-code-smells-status" "FAILED"
-   fail "Quality Gate has FAILED.${reset}\n\n${analysisResultMsg}"
+   fail "code smells has FAILED.${reset}\n\n${analysisResultMsg}"
     # fi
 else
    set_output "quality-gate-status" "FAILED"
