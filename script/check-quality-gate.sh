@@ -96,7 +96,7 @@ elif [[ ${qualityGateStatus} == "ERROR" ]]; then
        success "bugs :${reset} ${qualityGateStatus_bugs_actualValue}"
    fi
 
-   endoferror ""
+   endoferror "https://f575-211-23-35-187.ngrok-free.app/api/qualitygates/project_status?analysisId=${analysisId}"
 else
    set_output "quality-gate-status" "FAILED"
    fail "Quality Gate not set for the project. Please configure the Quality Gate in SonarQube or remove sonarqube-quality-gate action from the workflow."
