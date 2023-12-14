@@ -81,7 +81,7 @@ elif [[ ${qualityGateStatus} == "ERROR" ]]; then
    set_output "quality-gate-status" "FAILED"
    fail "Quality Gate has FAILED.${reset} ${analysisResultMsg}"
 
-   title "\nOverall Code："
+   title "Overall Code："
    if [[ ${qualityGateStatus_code_smells} == "ERROR" ]]; then
        set_output "quality-gate-code-smells-status" "FAILED"
        fail "code smells :${reset} ${qualityGateStatus_code_smells_actualValue}"
@@ -103,7 +103,7 @@ elif [[ ${qualityGateStatus} == "ERROR" ]]; then
        success "bugs :${reset} ${qualityGateStatus_bugs_actualValue}"
    fi
 
-   title "\nNew Code："
+   title "New Code："
    if [[ ${qualityGateStatus_new_code_smells} == "ERROR" ]]; then
        set_output "quality-gate-code-smells-status" "FAILED"
        fail "code smells :${reset} ${qualityGateStatus_new_code_smells_actualValue}"
