@@ -57,7 +57,7 @@ qualityGateStatus_code_smells="$(curl --location --location-trusted --max-redirs
 qualityGateStatus_code_smells_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[2].actualValue')"
 
 dashboardUrl=${serverUrl}
-analysisResultMsg="Detailed information can be found at: ${dashboardUrl}\n"
+analysisResultMsg="Detailed information can be found at: ${dashboardUrl}"
 
 if [[ ${qualityGateStatus} == "OK" ]]; then
    set_output "quality-gate-status" "PASSED"
