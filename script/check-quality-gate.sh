@@ -56,9 +56,8 @@ qualityGateStatus="$(curl --location --location-trusted --max-redirs 10 --silent
 qualityGateStatus_code_smells="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[2].status')"
 qualityGateStatus_code_smells_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[2].actualValue')"
 
-dashboardUrl=${serverUrl%/}+${analysisId}
-# analysisResultMsg="Detailed information can be found at: ${dashboardUrl}\n"
-analysisResultMsg="Detailed information can be found at: ${qualityGateStatus_code_smells}\n"
+dashboardUrl=${serverUrl}
+analysisResultMsg="Detailed information can be found at: ${dashboardUrl}\n"
 
 if [[ ${qualityGateStatus} == "OK" ]]; then
    set_output "quality-gate-status" "PASSED"
@@ -66,14 +65,22 @@ if [[ ${qualityGateStatus} == "OK" ]]; then
 elif [[ ${qualityGateStatus} == "WARN" ]]; then
    set_output "quality-gate-status" "WARN"
    warn "Warnings on Quality Gate.${reset}\n\n${analysisResultMsg}"
+   endoferror ""
 elif [[ ${qualityGateStatus} == "ERROR" ]]; then
+
    set_output "quality-gate-status" "FAILED"
-   fail "Quality Gate has FAILED.${reset}\n\n${analysisResultMsg}"
+   fail "Quality Gate has FAILED.${reset} ${analysisResultMsg}"
    if [[ ${qualityGateStatus_code_smells} == "ERROR" ]]; then
        set_output "quality-gate-code-smells-status" "FAILED"
-       fail "code smells has FAILED.${reset} actualValue：${qualityGateStatus_code_smells_actualValue}"
+       fail "code smells :${reset} ${qualityGateStatus_code_smells_actualValue}"
+   elif [[ ${qualityGateStatus_code_smells} == "WARN" ]]; then
+       set_output "quality-gate-code-smells-status" "WARN"
+       warn "code smells :${reset} ${qualityGateStatus_code_smells_actualValue}"
+   elif [[ ${qualityGateStatus_code_smells} == "OK" ]]; then
+       set_output "quality-gate-code-smells-status" "OK"
+       success "code smells :${reset} ${qualityGateStatus_code_smells_actualValue}"
    fi
-   endoferror "Quality Gate has FAILED"
+   endoferror ""
 else
    set_output "quality-gate-status" "FAILED"
    fail "Quality Gate not set for the project. Please configure the Quality Gate in SonarQube or remove sonarqube-quality-gate action from the workflow."
