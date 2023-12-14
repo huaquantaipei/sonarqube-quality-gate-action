@@ -19,6 +19,7 @@ debug() {
     fi
 }
 
+title() { echo -e "${gray} $*${reset}"; }
 success() { echo -e "${green}✔ $*${reset}"; }
 warn() { echo -e "${yellow}✖ $*${reset}"; }
 fail() { echo -e "${red}✖ $*${reset}"; }
