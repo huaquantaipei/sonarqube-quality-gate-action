@@ -95,96 +95,96 @@ elif [[ ${qualityGateStatus} == "ERROR" ]]; then
    #########################################################################################
    if [[ ${qualityGateStatus_reliability_rating} == "ERROR" ]]; then
        set_output "quality-gate-code-smells-status" "FAILED"
-       fail "code smells :${reset} ${qualityGateStatus_reliability_rating_actualValue}"
+       fail "Reliability rating :${reset} ${qualityGateStatus_reliability_rating_actualValue}"
    elif [[ ${qualityGateStatus_reliability_rating} == "WARN" ]]; then
        set_output "quality-gate-code-smells-status" "WARN"
-       warn "code smells :${reset} ${qualityGateStatus_reliability_rating_actualValue}"
+       warn "Reliability rating :${reset} ${qualityGateStatus_reliability_rating_actualValue}"
    elif [[ ${qualityGateStatus_reliability_rating} == "OK" ]]; then
        set_output "quality-gate-code-smells-status" "OK"
-       success "code smells :${reset} ${qualityGateStatus_reliability_rating_actualValue}"
+       success "Reliability rating :${reset} ${qualityGateStatus_reliability_rating_actualValue}"
    fi
    #########################################################################################
 
    if [[ ${qualityGateStatus_security_rating} == "ERROR" ]]; then
        set_output "quality-gate-code-smells-status" "FAILED"
-       fail "code smells :${reset} ${qualityGateStatus_security_rating_actualValue}"
+       fail "Security rating :${reset} ${qualityGateStatus_security_rating_actualValue}"
    elif [[ ${qualityGateStatus_security_rating} == "WARN" ]]; then
        set_output "quality-gate-code-smells-status" "WARN"
-       warn "code smells :${reset} ${qualityGateStatus_security_rating_actualValue}"
+       warn "Security rating :${reset} ${qualityGateStatus_security_rating_actualValue}"
    elif [[ ${qualityGateStatus_security_rating} == "OK" ]]; then
        set_output "quality-gate-code-smells-status" "OK"
-       success "code smells :${reset} ${qualityGateStatus_security_rating_actualValue}"
+       success "Security rating :${reset} ${qualityGateStatus_security_rating_actualValue}"
    fi
    #########################################################################################
 
    if [[ ${qualityGateStatus_blocker_violations} == "ERROR" ]]; then
        set_output "quality-gate-code-smells-status" "FAILED"
-       fail "code smells :${reset} ${qualityGateStatus_blocker_violations_actualValue}"
+       fail "Blocker violations :${reset} ${qualityGateStatus_blocker_violations_actualValue}"
    elif [[ ${qualityGateStatus_blocker_violations} == "WARN" ]]; then
        set_output "quality-gate-code-smells-status" "WARN"
-       warn "code smells :${reset} ${qualityGateStatus_blocker_violations_actualValue}"
+       warn "Blocker violations :${reset} ${qualityGateStatus_blocker_violations_actualValue}"
    elif [[ ${qualityGateStatus_blocker_violations} == "OK" ]]; then
        set_output "quality-gate-code-smells-status" "OK"
-       success "code smells :${reset} ${qualityGateStatus_blocker_violations_actualValue}"
+       success "Blocker violations :${reset} ${qualityGateStatus_blocker_violations_actualValue}"
    fi
    #########################################################################################
 
    if [[ ${qualityGateStatus_critical_violations} == "ERROR" ]]; then
        set_output "quality-gate-code-smells-status" "FAILED"
-       fail "code smells :${reset} ${qualityGateStatus_critical_violations_actualValue}"
+       fail "Critical violations :${reset} ${qualityGateStatus_critical_violations_actualValue}"
    elif [[ ${qualityGateStatus_critical_violations} == "WARN" ]]; then
        set_output "quality-gate-code-smells-status" "WARN"
-       warn "code smells :${reset} ${qualityGateStatus_critical_violations_actualValue}"
+       warn "Critical violations :${reset} ${qualityGateStatus_critical_violations_actualValue}"
    elif [[ ${qualityGateStatus_critical_violations} == "OK" ]]; then
        set_output "quality-gate-code-smells-status" "OK"
-       success "code smells :${reset} ${qualityGateStatus_critical_violations_actualValue}"
+       success "Critical violations :${reset} ${qualityGateStatus_critical_violations_actualValue}"
    fi
    #########################################################################################
 
    if [[ ${qualityGateStatus_code_smells} == "ERROR" ]]; then
        set_output "quality-gate-code-smells-status" "FAILED"
-       fail "code smells :${reset} ${qualityGateStatus_code_smells_actualValue}"
+       fail "Code smells :${reset} ${qualityGateStatus_code_smells_actualValue}"
    elif [[ ${qualityGateStatus_code_smells} == "WARN" ]]; then
        set_output "quality-gate-code-smells-status" "WARN"
-       warn "code smells :${reset} ${qualityGateStatus_code_smells_actualValue}"
+       warn "Code smells :${reset} ${qualityGateStatus_code_smells_actualValue}"
    elif [[ ${qualityGateStatus_code_smells} == "OK" ]]; then
        set_output "quality-gate-code-smells-status" "OK"
-       success "code smells :${reset} ${qualityGateStatus_code_smells_actualValue}"
+       success "Code smells :${reset} ${qualityGateStatus_code_smells_actualValue}"
    fi
    #########################################################################################
 
    if [[ ${qualityGateStatus_bugs} == "ERROR" ]]; then
        set_output "quality-gate-code-smells-status" "FAILED"
-       fail "code smells :${reset} ${qualityGateStatus_bugs_actualValue}"
+       fail "Bugs :${reset} ${qualityGateStatus_bugs_actualValue}"
    elif [[ ${qualityGateStatus_bugs} == "WARN" ]]; then
        set_output "quality-gate-code-smells-status" "WARN"
-       warn "code smells :${reset} ${qualityGateStatus_bugs_actualValue}"
+       warn "Bugs :${reset} ${qualityGateStatus_bugs_actualValue}"
    elif [[ ${qualityGateStatus_bugs} == "OK" ]]; then
        set_output "quality-gate-code-smells-status" "OK"
-       success "bugs :${reset} ${qualityGateStatus_bugs_actualValue}"
+       success "Bugs :${reset} ${qualityGateStatus_bugs_actualValue}"
    fi
    #########################################################################################
 
    title "New Code："
    if [[ ${qualityGateStatus_new_code_smells} == "ERROR" ]]; then
        set_output "quality-gate-code-smells-status" "FAILED"
-       fail "code smells :${reset} ${qualityGateStatus_new_code_smells_actualValue}"
+       fail "New code smells :${reset} ${qualityGateStatus_new_code_smells_actualValue}"
    elif [[ ${qualityGateStatus_new_code_smells} == "WARN" ]]; then
        set_output "quality-gate-code-smells-status" "WARN"
-       warn "code smells :${reset} ${qualityGateStatus_new_code_smells_actualValue}"
+       warn "New code smells :${reset} ${qualityGateStatus_new_code_smells_actualValue}"
    elif [[ ${qualityGateStatus_new_code_smells} == "OK" ]]; then
        set_output "quality-gate-code-smells-status" "OK"
-       success "code smells :${reset} ${qualityGateStatus_new_code_smells_actualValue}"
+       success "New code smells :${reset} ${qualityGateStatus_new_code_smells_actualValue}"
    fi
    if [[ ${qualityGateStatus_new_bugs} == "ERROR" ]]; then
        set_output "quality-gate-code-smells-status" "FAILED"
-       fail "code smells :${reset} ${qualityGateStatus_new_bugs_actualValue}"
+       fail "New bugs :${reset} ${qualityGateStatus_new_bugs_actualValue}"
    elif [[ ${qualityGateStatus_new_bugs} == "WARN" ]]; then
        set_output "quality-gate-code-smells-status" "WARN"
-       warn "code smells :${reset} ${qualityGateStatus_new_bugs_actualValue}"
+       warn "New bugs :${reset} ${qualityGateStatus_new_bugs_actualValue}"
    elif [[ ${qualityGateStatus_new_bugs} == "OK" ]]; then
        set_output "quality-gate-code-smells-status" "OK"
-       success "bugs :${reset} ${qualityGateStatus_new_bugs_actualValue}"
+       success "New bugs :${reset} ${qualityGateStatus_new_bugs_actualValue}"
    fi
 
    endoferror "https://f575-211-23-35-187.ngrok-free.app/api/qualitygates/project_status?analysisId=${analysisId}"
