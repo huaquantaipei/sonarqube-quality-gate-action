@@ -68,28 +68,24 @@ qualityGateStatus_new_critical_violations="$(curl --location --location-trusted 
 qualityGateStatus_new_critical_violations_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[14].actualValue')"
 qualityGateStatus_major_violations="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[9].status')"
 qualityGateStatus_major_violations_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[9].actualValue')"
-qualityGateStatus_new_major_violations="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[17].status')"
-qualityGateStatus_new_major_violations_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[17].actualValue')"
+qualityGateStatus_new_major_violations="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[18].status')"
+qualityGateStatus_new_major_violations_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[18].actualValue')"
 qualityGateStatus_minor_violations="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[10].status')"
 qualityGateStatus_minor_violations_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[10].actualValue')"
-qualityGateStatus_new_minor_violations="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[18].status')"
-qualityGateStatus_new_minor_violations_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[18].actualValue')"
-
+qualityGateStatus_new_minor_violations="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[19].status')"
+qualityGateStatus_new_minor_violations_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[19].actualValue')"
 qualityGateStatus_line_coverage="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[8].status')"
 qualityGateStatus_line_coverage_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[8].actualValue')"
-
-
+qualityGateStatus_new_line_coverage="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[17].status')"
+qualityGateStatus_new_line_coverage_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[17].actualValue')"
 qualityGateStatus_code_smells="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[6].status')"
 qualityGateStatus_code_smells_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[6].actualValue')"
-qualityGateStatus_new_code_smells="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[12].status')"
-qualityGateStatus_new_code_smells_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[12].actualValue')"
-
+qualityGateStatus_new_code_smells="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[13].status')"
+qualityGateStatus_new_code_smells_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[13].actualValue')"
 qualityGateStatus_bugs="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[5].status')"
 qualityGateStatus_bugs_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[5].actualValue')"
 qualityGateStatus_new_bugs="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[12].status')"
 qualityGateStatus_new_bugs_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[12].actualValue')"
-
-
 
 dashboardUrl=${serverUrl}
 analysisResultMsg="Detailed information can be found at: ${dashboardUrl}"
