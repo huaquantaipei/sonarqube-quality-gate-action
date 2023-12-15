@@ -105,107 +105,107 @@ elif [[ ${qualityGateStatus} == "ERROR" ]]; then
    title "Overall Code："
    #########################################################################################
    if [[ ${qualityGateStatus_reliability_rating} == "ERROR" ]]; then
-       set_output "quality-gate-code-smells-status" "FAILED"
+       set_output "quality-gate-reliability-rating" "FAILED"
        fail "Reliability rating :${reset} ${qualityGateStatus_reliability_rating_actualValue}"
    elif [[ ${qualityGateStatus_reliability_rating} == "WARN" ]]; then
-       set_output "quality-gate-code-smells-status" "WARN"
+       set_output "quality-gate-reliability-rating" "WARN"
        warn "Reliability rating :${reset} ${qualityGateStatus_reliability_rating_actualValue}"
    elif [[ ${qualityGateStatus_reliability_rating} == "OK" ]]; then
-       set_output "quality-gate-code-smells-status" "OK"
+       set_output "quality-gate-reliability-rating" "OK"
        success "Reliability rating :${reset} ${qualityGateStatus_reliability_rating_actualValue}"
    fi
    #########################################################################################
 
    if [[ ${qualityGateStatus_security_rating} == "ERROR" ]]; then
-       set_output "quality-gate-code-smells-status" "FAILED"
+       set_output "quality-gate-security-rating" "FAILED"
        fail "Security rating :${reset} ${qualityGateStatus_security_rating_actualValue}"
    elif [[ ${qualityGateStatus_security_rating} == "WARN" ]]; then
-       set_output "quality-gate-code-smells-status" "WARN"
+       set_output "quality-gate-security-rating" "WARN"
        warn "Security rating :${reset} ${qualityGateStatus_security_rating_actualValue}"
    elif [[ ${qualityGateStatus_security_rating} == "OK" ]]; then
-       set_output "quality-gate-code-smells-status" "OK"
+       set_output "quality-gate-security-rating" "OK"
        success "Security rating :${reset} ${qualityGateStatus_security_rating_actualValue}"
    fi
    #########################################################################################
 
    if [[ ${qualityGateStatus_blocker_violations} == "ERROR" ]]; then
-       set_output "quality-gate-code-smells-status" "FAILED"
+       set_output "quality-gate-blocker-violations" "FAILED"
        fail "Blocker violations :${reset} ${qualityGateStatus_blocker_violations_actualValue}"
    elif [[ ${qualityGateStatus_blocker_violations} == "WARN" ]]; then
-       set_output "quality-gate-code-smells-status" "WARN"
+       set_output "quality-gate-blocker-violations" "WARN"
        warn "Blocker violations :${reset} ${qualityGateStatus_blocker_violations_actualValue}"
    elif [[ ${qualityGateStatus_blocker_violations} == "OK" ]]; then
-       set_output "quality-gate-code-smells-status" "OK"
+       set_output "quality-gate-blocker-violations" "OK"
        success "Blocker violations :${reset} ${qualityGateStatus_blocker_violations_actualValue}"
    fi
    #########################################################################################
 
    if [[ ${qualityGateStatus_critical_violations} == "ERROR" ]]; then
-       set_output "quality-gate-code-smells-status" "FAILED"
+       set_output "quality-gate-code-critical-violations" "FAILED"
        fail "Critical violations :${reset} ${qualityGateStatus_critical_violations_actualValue}"
    elif [[ ${qualityGateStatus_critical_violations} == "WARN" ]]; then
-       set_output "quality-gate-code-smells-status" "WARN"
+       set_output "quality-gate-code-critical-violations" "WARN"
        warn "Critical violations :${reset} ${qualityGateStatus_critical_violations_actualValue}"
    elif [[ ${qualityGateStatus_critical_violations} == "OK" ]]; then
-       set_output "quality-gate-code-smells-status" "OK"
+       set_output "quality-gate-code-critical-violations" "OK"
        success "Critical violations :${reset} ${qualityGateStatus_critical_violations_actualValue}"
    fi
    #########################################################################################
 
    if [[ ${qualityGateStatus_major_violations} == "ERROR" ]]; then
-       set_output "quality-gate-code-smells-status" "FAILED"
+       set_output "quality-gate-major-violations" "FAILED"
        fail "Major violations :${reset} ${qualityGateStatus_major_violations_actualValue}"
    elif [[ ${qualityGateStatus_major_violations} == "WARN" ]]; then
-       set_output "quality-gate-code-smells-status" "WARN"
+       set_output "quality-gate-major-violations" "WARN"
        warn "Major violations :${reset} ${qualityGateStatus_major_violations_actualValue}"
    elif [[ ${qualityGateStatus_major_violations} == "OK" ]]; then
-       set_output "quality-gate-code-smells-status" "OK"
+       set_output "quality-gate-major-violations" "OK"
        success "Major violations :${reset} ${qualityGateStatus_major_violations_actualValue}"
    fi
    #########################################################################################
 
    if [[ ${qualityGateStatus_minor_violations} == "ERROR" ]]; then
-       set_output "quality-gate-code-smells-status" "FAILED"
+       set_output "quality-gate-minor-violations" "FAILED"
        fail "Minor violations :${reset} ${qualityGateStatus_minor_violations_actualValue}"
    elif [[ ${qualityGateStatus_minor_violations} == "WARN" ]]; then
-       set_output "quality-gate-code-smells-status" "WARN"
+       set_output "quality-gate-minor-violations" "WARN"
        warn "Minor violations :${reset} ${qualityGateStatus_minor_violations_actualValue}"
    elif [[ ${qualityGateStatus_minor_violations} == "OK" ]]; then
-       set_output "quality-gate-code-smells-status" "OK"
+       set_output "quality-gate-minor-violations" "OK"
        success "Minor violations :${reset} ${qualityGateStatus_minor_violations_actualValue}"
    fi
    #########################################################################################
    if [[ ${qualityGateStatus_line_coverage} == "ERROR" ]]; then
-       set_output "quality-gate-code-smells-status" "FAILED"
+       set_output "quality-gate-line-coverage" "FAILED"
        fail "Line coverage :${reset} ${qualityGateStatus_line_coverage_actualValue}"
    elif [[ ${qualityGateStatus_line_coverage} == "WARN" ]]; then
-       set_output "quality-gate-code-smells-status" "WARN"
+       set_output "quality-gate-line-coverage" "WARN"
        warn "Line coverage :${reset} ${qualityGateStatus_line_coverage_actualValue}"
    elif [[ ${qualityGateStatus_line_coverage} == "OK" ]]; then
-       set_output "quality-gate-code-smells-status" "OK"
+       set_output "quality-gate-line-coverage" "OK"
        success "Line coverage :${reset} ${qualityGateStatus_line_coverage_actualValue}"
    fi
    #########################################################################################
    if [[ ${qualityGateStatus_code_smells} == "ERROR" ]]; then
-       set_output "quality-gate-code-smells-status" "FAILED"
+       set_output "quality-gate-code_smells" "FAILED"
        fail "Code smells :${reset} ${qualityGateStatus_code_smells_actualValue}"
    elif [[ ${qualityGateStatus_code_smells} == "WARN" ]]; then
-       set_output "quality-gate-code-smells-status" "WARN"
+       set_output "quality-gate-code_smells" "WARN"
        warn "Code smells :${reset} ${qualityGateStatus_code_smells_actualValue}"
    elif [[ ${qualityGateStatus_code_smells} == "OK" ]]; then
-       set_output "quality-gate-code-smells-status" "OK"
+       set_output "quality-gate-code_smells" "OK"
        success "Code smells :${reset} ${qualityGateStatus_code_smells_actualValue}"
    fi
    #########################################################################################
 
    if [[ ${qualityGateStatus_bugs} == "ERROR" ]]; then
-       set_output "quality-gate-code-smells-status" "FAILED"
+       set_output "quality-gate-bugs" "FAILED"
        fail "Bugs :${reset} ${qualityGateStatus_bugs_actualValue}"
    elif [[ ${qualityGateStatus_bugs} == "WARN" ]]; then
-       set_output "quality-gate-code-smells-status" "WARN"
+       set_output "quality-gate-bugs" "WARN"
        warn "Bugs :${reset} ${qualityGateStatus_bugs_actualValue}"
    elif [[ ${qualityGateStatus_bugs} == "OK" ]]; then
-       set_output "quality-gate-code-smells-status" "OK"
+       set_output "quality-gate-bugs" "OK"
        success "Bugs :${reset} ${qualityGateStatus_bugs_actualValue}"
    fi
    #########################################################################################
@@ -214,70 +214,70 @@ elif [[ ${qualityGateStatus} == "ERROR" ]]; then
    #########################################################################################
 
    if [[ ${qualityGateStatus_new_blocker_violations} == "ERROR" ]]; then
-       set_output "quality-gate-code-smells-status" "FAILED"
+       set_output "quality-gate-new-blocker-violations" "FAILED"
        fail "Blocker violations :${reset} ${qualityGateStatus_new_blocker_violations_actualValue}"
    elif [[ ${qualityGateStatus_new_blocker_violations} == "WARN" ]]; then
-       set_output "quality-gate-code-smells-status" "WARN"
+       set_output "quality-gate-new-blocker-violations" "WARN"
        warn "Blocker violations :${reset} ${qualityGateStatus_new_blocker_violations_actualValue}"
    elif [[ ${qualityGateStatus_new_blocker_violations} == "OK" ]]; then
-       set_output "quality-gate-code-smells-status" "OK"
+       set_output "quality-gate-new-blocker-violations" "OK"
        success "Blocker violations :${reset} ${qualityGateStatus_new_blocker_violations_actualValue}"
    fi
    #########################################################################################
 
    if [[ ${qualityGateStatus_new_critical_violations} == "ERROR" ]]; then
-       set_output "quality-gate-code-smells-status" "FAILED"
+       set_output "quality-gate-new-critical-violations" "FAILED"
        fail "Critical violations :${reset} ${qualityGateStatus_new_critical_violations_actualValue}"
    elif [[ ${qualityGateStatus_new_critical_violations} == "WARN" ]]; then
-       set_output "quality-gate-code-smells-status" "WARN"
+       set_output "quality-gate-new-critical-violations" "WARN"
        warn "Critical violations :${reset} ${qualityGateStatus_new_critical_violations_actualValue}"
    elif [[ ${qualityGateStatus_new_critical_violations} == "OK" ]]; then
-       set_output "quality-gate-code-smells-status" "OK"
+       set_output "quality-gate-new-critical-violations" "OK"
        success "Critical violations :${reset} ${qualityGateStatus_new_critical_violations_actualValue}"
    fi
 #########################################################################################
    if [[ ${qualityGateStatus_new_major_violations} == "ERROR" ]]; then
-       set_output "quality-gate-code-smells-status" "FAILED"
+       set_output "quality-gate-new-major-violations" "FAILED"
        fail "Major violations :${reset} ${qualityGateStatus_new_major_violations_actualValue}"
    elif [[ ${qualityGateStatus_new_major_violations} == "WARN" ]]; then
-       set_output "quality-gate-code-smells-status" "WARN"
+       set_output "quality-gate-new-major-violations" "WARN"
        warn "Major violations :${reset} ${qualityGateStatus_new_major_violations_actualValue}"
    elif [[ ${qualityGateStatus_new_major_violations} == "OK" ]]; then
-       set_output "quality-gate-code-smells-status" "OK"
+       set_output "quality-gate-new-major-violations" "OK"
        success "Major violations :${reset} ${qualityGateStatus_new_major_violations_actualValue}"
    fi
 
 #########################################################################################
    if [[ ${qualityGateStatus_new_minor_violations} == "ERROR" ]]; then
-       set_output "quality-gate-code-smells-status" "FAILED"
+       set_output "quality-gate-new-minor-violations" "FAILED"
        fail "Minor violations :${reset} ${qualityGateStatus_new_minor_violations_actualValue}"
    elif [[ ${qualityGateStatus_new_minor_violations} == "WARN" ]]; then
-       set_output "quality-gate-code-smells-status" "WARN"
+       set_output "quality-gate-new-minor-violations" "WARN"
        warn "Minor violations :${reset} ${qualityGateStatus_new_minor_violations_actualValue}"
    elif [[ ${qualityGateStatus_new_minor_violations} == "OK" ]]; then
-       set_output "quality-gate-code-smells-status" "OK"
+       set_output "quality-gate-new-minor-violations" "OK"
        success "Minor violations :${reset} ${qualityGateStatus_new_minor_violations_actualValue}"
    fi
 #########################################################################################
 
    if [[ ${qualityGateStatus_new_code_smells} == "ERROR" ]]; then
-       set_output "quality-gate-code-smells-status" "FAILED"
+       set_output "quality-gate-new-code-smells" "FAILED"
        fail "New code smells :${reset} ${qualityGateStatus_new_code_smells_actualValue}"
    elif [[ ${qualityGateStatus_new_code_smells} == "WARN" ]]; then
-       set_output "quality-gate-code-smells-status" "WARN"
+       set_output "quality-gate-new-code-smells" "WARN"
        warn "New code smells :${reset} ${qualityGateStatus_new_code_smells_actualValue}"
    elif [[ ${qualityGateStatus_new_code_smells} == "OK" ]]; then
-       set_output "quality-gate-code-smells-status" "OK"
+       set_output "quality-gate-new-code-smells" "OK"
        success "New code smells :${reset} ${qualityGateStatus_new_code_smells_actualValue}"
    fi
    if [[ ${qualityGateStatus_new_bugs} == "ERROR" ]]; then
-       set_output "quality-gate-code-smells-status" "FAILED"
+       set_output "quality-gate-new-bugs" "FAILED"
        fail "New bugs :${reset} ${qualityGateStatus_new_bugs_actualValue}"
    elif [[ ${qualityGateStatus_new_bugs} == "WARN" ]]; then
-       set_output "quality-gate-code-smells-status" "WARN"
+       set_output "quality-gate-new-bugs" "WARN"
        warn "New bugs :${reset} ${qualityGateStatus_new_bugs_actualValue}"
    elif [[ ${qualityGateStatus_new_bugs} == "OK" ]]; then
-       set_output "quality-gate-code-smells-status" "OK"
+       set_output "quality-gate-new-bugs" "OK"
        success "New bugs :${reset} ${qualityGateStatus_new_bugs_actualValue}"
    fi
 
