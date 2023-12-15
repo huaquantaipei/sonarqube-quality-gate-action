@@ -60,13 +60,22 @@ qualityGateStatus_security_rating="$(curl --location --location-trusted --max-re
 qualityGateStatus_security_rating_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[1].actualValue')"
 qualityGateStatus_blocker_violations="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[4].status')"
 qualityGateStatus_blocker_violations_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[4].actualValue')"
+qualityGateStatus_new_blocker_violations="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[11].status')"
+qualityGateStatus_new_blocker_violations_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[11].actualValue')"
 qualityGateStatus_critical_violations="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[7].status')"
 qualityGateStatus_critical_violations_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[7].actualValue')"
+qualityGateStatus_new_critical_violations="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[14].status')"
+qualityGateStatus_new_critical_violations_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[14].actualValue')"
 qualityGateStatus_major_violations="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[9].status')"
 qualityGateStatus_major_violations_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[9].actualValue')"
+qualityGateStatus_new_major_violations="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[17].status')"
+qualityGateStatus_new_major_violations_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[17].actualValue')"
 qualityGateStatus_minor_violations="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[10].status')"
-qualityGateStatus_minor_violations_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[8].actualValue')"
-qualityGateStatus_line_coverage="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[10].status')"
+qualityGateStatus_minor_violations_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[10].actualValue')"
+qualityGateStatus_new_minor_violations="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[18].status')"
+qualityGateStatus_new_minor_violations_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[18].actualValue')"
+
+qualityGateStatus_line_coverage="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[8].status')"
 qualityGateStatus_line_coverage_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[8].actualValue')"
 
 
@@ -77,8 +86,8 @@ qualityGateStatus_new_code_smells_actualValue="$(curl --location --location-trus
 
 qualityGateStatus_bugs="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[5].status')"
 qualityGateStatus_bugs_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[5].actualValue')"
-qualityGateStatus_new_bugs="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[11].status')"
-qualityGateStatus_new_bugs_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[11].actualValue')"
+qualityGateStatus_new_bugs="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[12].status')"
+qualityGateStatus_new_bugs_actualValue="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[12].actualValue')"
 
 
 
@@ -206,6 +215,55 @@ elif [[ ${qualityGateStatus} == "ERROR" ]]; then
    #########################################################################################
 
    title "New Code：${reset}"
+   #########################################################################################
+
+   if [[ ${qualityGateStatus_new_blocker_violations} == "ERROR" ]]; then
+       set_output "quality-gate-code-smells-status" "FAILED"
+       fail "Blocker violations :${reset} ${qualityGateStatus_new_blocker_violations_actualValue}"
+   elif [[ ${qualityGateStatus_new_blocker_violations} == "WARN" ]]; then
+       set_output "quality-gate-code-smells-status" "WARN"
+       warn "Blocker violations :${reset} ${qualityGateStatus_new_blocker_violations_actualValue}"
+   elif [[ ${qualityGateStatus_new_blocker_violations} == "OK" ]]; then
+       set_output "quality-gate-code-smells-status" "OK"
+       success "Blocker violations :${reset} ${qualityGateStatus_new_blocker_violations_actualValue}"
+   fi
+   #########################################################################################
+
+   if [[ ${qualityGateStatus_new_critical_violations} == "ERROR" ]]; then
+       set_output "quality-gate-code-smells-status" "FAILED"
+       fail "Critical violations :${reset} ${qualityGateStatus_new_critical_violations_actualValue}"
+   elif [[ ${qualityGateStatus_new_critical_violations} == "WARN" ]]; then
+       set_output "quality-gate-code-smells-status" "WARN"
+       warn "Critical violations :${reset} ${qualityGateStatus_new_critical_violations_actualValue}"
+   elif [[ ${qualityGateStatus_new_critical_violations} == "OK" ]]; then
+       set_output "quality-gate-code-smells-status" "OK"
+       success "Critical violations :${reset} ${qualityGateStatus_new_critical_violations_actualValue}"
+   fi
+#########################################################################################
+   if [[ ${qualityGateStatus_new_major_violations} == "ERROR" ]]; then
+       set_output "quality-gate-code-smells-status" "FAILED"
+       fail "Major violations :${reset} ${qualityGateStatus_new_major_violations_actualValue}"
+   elif [[ ${qualityGateStatus_new_major_violations} == "WARN" ]]; then
+       set_output "quality-gate-code-smells-status" "WARN"
+       warn "Major violations :${reset} ${qualityGateStatus_new_major_violations_actualValue}"
+   elif [[ ${qualityGateStatus_new_major_violations} == "OK" ]]; then
+       set_output "quality-gate-code-smells-status" "OK"
+       success "Major violations :${reset} ${qualityGateStatus_new_major_violations_actualValue}"
+   fi
+
+#########################################################################################
+   if [[ ${qualityGateStatus_new_minor_violations} == "ERROR" ]]; then
+       set_output "quality-gate-code-smells-status" "FAILED"
+       fail "Minor violations :${reset} ${qualityGateStatus_new_minor_violations_actualValue}"
+   elif [[ ${qualityGateStatus_new_minor_violations} == "WARN" ]]; then
+       set_output "quality-gate-code-smells-status" "WARN"
+       warn "Minor violations :${reset} ${qualityGateStatus_new_minor_violations_actualValue}"
+   elif [[ ${qualityGateStatus_new_minor_violations} == "OK" ]]; then
+       set_output "quality-gate-code-smells-status" "OK"
+       success "Minor violations :${reset} ${qualityGateStatus_new_minor_violations_actualValue}"
+   fi
+#########################################################################################
+
    if [[ ${qualityGateStatus_new_code_smells} == "ERROR" ]]; then
        set_output "quality-gate-code-smells-status" "FAILED"
        fail "New code smells :${reset} ${qualityGateStatus_new_code_smells_actualValue}"
