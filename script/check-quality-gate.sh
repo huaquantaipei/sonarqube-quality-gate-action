@@ -55,7 +55,7 @@ qualityGateUrl="${serverUrl}/api/qualitygates/project_status?analysisId=${analys
 qualityGateStatus="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.status')"
 
 for i in "$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions')"; do
-    echo "i=${i[0].metricKey}"
+    echo "i=${i}.metricKey"
 done
 
 qualityGateStatus_reliability_rating="$(curl --location --location-trusted --max-redirs 10 --silent --fail --show-error --user "${SONAR_TOKEN}": "${qualityGateUrl}" | jq -r '.projectStatus.conditions[0].status')"
