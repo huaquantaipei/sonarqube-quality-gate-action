@@ -281,7 +281,7 @@ elif [[ ${qualityGateStatus} == "ERROR" ]]; then
        success "New bugs :${reset} ${qualityGateStatus_new_bugs_actualValue}"
    fi
 
-   # endoferror "\nhttps://f575-211-23-35-187.ngrok-free.app/api/qualitygates/project_status?analysisId=${analysisId}"
+   # endoferror "\nhttps://df11-211-23-35-187.ngrok-free.app/api/qualitygates/project_status?analysisId=${analysisId}"
    endoferror "${qualityGateUrl}"
 
 else
